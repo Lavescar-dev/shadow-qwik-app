@@ -1,0 +1,40 @@
+.assembly-view ::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.assembly-view ::-webkit-scrollbar-track {
+  background: #020202;
+}
+
+.assembly-view ::-webkit-scrollbar-thumb {
+  background: #1f1f1f;
+  border-radius: 0;
+}
+
+.assembly-view ::-webkit-scrollbar-thumb:hover {
+  background: #00ffcc;
+}
+
+.assembly-view {
+  background-color: #020202;
+  color: #e5e5e5;
+  overflow: hidden;
+}
+
+.assembly-view .assembly-grid-bg {
+  background-image:
+    linear-gradient(#1f1f1f 1px, transparent 1px),
+    linear-gradient(90deg, #1f1f1f 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: center center;
+}
+
+.assembly-view .topo-container {
+  cursor: crosshair;
+}
+
+.assembly-view .topo-container canvas {
+  display: block;
+  outline: none;
+}

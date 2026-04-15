@@ -1,0 +1,183 @@
+.electronics-view ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.electronics-view ::-webkit-scrollbar-track {
+  background: #050505;
+  border-left: 1px solid #262626;
+  border-top: 1px solid #262626;
+}
+
+.electronics-view ::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+.electronics-view ::-webkit-scrollbar-thumb:hover {
+  background: #00ffcc;
+}
+
+.electronics-view {
+  background-color: #050505;
+  color: #e5e5e5;
+  user-select: none;
+}
+
+.electronics-view .eda-workspace {
+  background-color: #1a1a1a !important;
+  background-image:
+    linear-gradient(#2a2a2a 1px, transparent 1px),
+    linear-gradient(90deg, #2a2a2a 1px, transparent 1px) !important;
+  background-size: 20px 20px;
+  background-position: top left;
+  border: 2px inset #444;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+.electronics-view .hw-node {
+  position: absolute;
+  cursor: grab;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
+  transition: filter 0.1s, transform 0.1s;
+}
+
+.electronics-view .hw-node.dragging {
+  cursor: grabbing;
+  filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.9));
+  transform: scale(1.02);
+  z-index: 100 !important;
+}
+
+.electronics-view .hw-node.collision {
+  filter: drop-shadow(0 0 15px rgba(255, 51, 102, 0.8));
+}
+
+.electronics-view .ic-body {
+  background-color: #111;
+  box-shadow: inset 0 0 0 1px #333, inset 0 0 10px rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+.electronics-view .ic-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 7px;
+  background-color: #1a1a1a;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  border: 1px solid #333;
+  border-top: none;
+}
+
+.electronics-view .breakout-body {
+  background-color: #0a1f14;
+  border: 2px solid #143d29;
+  border-radius: 4px;
+  position: relative;
+}
+
+.electronics-view .breakout-hole {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #050505;
+  border: 1.5px solid #d4af37;
+  position: absolute;
+}
+
+.electronics-view .power-body {
+  background-color: #0a0a0a;
+  border: 2px solid #444;
+  background-image:
+    repeating-linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515),
+    repeating-linear-gradient(45deg, #151515 25%, #0a0a0a 25%, #0a0a0a 75%, #151515 75%, #151515);
+  background-position: 0 0, 4px 4px;
+  background-size: 8px 8px;
+}
+
+.electronics-view .mech-body {
+  background-color: #151515;
+  border: 2px solid #444;
+  border-radius: 2px;
+}
+
+.electronics-view .mech-shaft {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #888 20%, #222 80%);
+  border: 2px solid #555;
+  margin: 0 auto;
+}
+
+.electronics-view .hw-pin {
+  width: 12px;
+  height: 12px;
+  background: #b87333;
+  border: 2px solid #5c3a1a;
+  border-radius: 50%;
+  cursor: crosshair;
+  transition: all 0.2s;
+  position: relative;
+  z-index: 30;
+}
+
+.electronics-view .hw-pin:hover {
+  background: #00ffcc;
+  transform: scale(1.3);
+  box-shadow: 0 0 8px #00ffcc;
+}
+
+.electronics-view .hw-pin.active-pin {
+  background: #ffcc00;
+  transform: scale(1.4);
+  box-shadow: 0 0 12px #ffcc00;
+  animation: electronics-pulse 1s infinite;
+}
+
+@keyframes electronics-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 204, 0, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+  }
+}
+
+.electronics-view .electronics-svg-layer {
+  pointer-events: none;
+}
+
+.electronics-view .trace-line {
+  stroke: #c87b3f;
+  stroke-width: 4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+  transition: stroke 0.2s, stroke-width 0.2s;
+  pointer-events: visibleStroke;
+}
+
+.electronics-view .trace-line:hover {
+  stroke: #00ffcc;
+  cursor: pointer;
+  stroke-width: 6;
+}
+
+.electronics-view .category-header {
+  position: sticky;
+  top: 0;
+  background-color: #050505;
+  z-index: 10;
+  border-bottom: 1px solid #262626;
+  border-top: 1px solid #262626;
+}

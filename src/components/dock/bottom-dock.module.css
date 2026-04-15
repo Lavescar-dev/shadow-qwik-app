@@ -1,0 +1,141 @@
+.dock {
+  display: grid;
+  gap: 0.75rem;
+  min-height: 0;
+  padding: 0.75rem;
+}
+
+.topRow {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr;
+  gap: 0.75rem;
+  min-height: 0;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.summaryCard {
+  padding: 0.8rem;
+  border-radius: 14px;
+  border: 1px solid rgba(39, 39, 39, 0.84);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.summaryLabel {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 10px;
+}
+
+.summaryValue {
+  margin-top: 0.25rem;
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+
+.warningPanel,
+.logPanel {
+  min-height: 0;
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.9rem;
+  border-radius: 16px;
+  border: 1px solid rgba(39, 39, 39, 0.86);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.warningList,
+.logList {
+  min-height: 0;
+  overflow: auto;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.warningItem {
+  padding: 0.65rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 207, 90, 0.2);
+  background: rgba(255, 207, 90, 0.07);
+  color: #f5d36e;
+  font-size: 12px;
+}
+
+.logHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.flushButton {
+  border-radius: 10px;
+  border: 1px solid rgba(39, 39, 39, 0.9);
+  padding: 0.45rem 0.7rem;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.flushButton:hover {
+  color: var(--accent);
+  border-color: rgba(0, 245, 196, 0.28);
+}
+
+.logItem {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.65rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(39, 39, 39, 0.84);
+  background: rgba(0, 0, 0, 0.42);
+  font-size: 12px;
+}
+
+.time {
+  color: #6b7280;
+}
+
+.level {
+  width: 3.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.level_info {
+  color: #c6c6c6;
+}
+
+.level_warn {
+  color: var(--accent-2);
+}
+
+.level_err {
+  color: var(--danger);
+}
+
+.level_succ {
+  color: var(--accent);
+}
+
+.empty {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 1100px) {
+  .topRow {
+    grid-template-columns: 1fr;
+  }
+
+  .summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,146 @@
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(39, 39, 39, 0.9);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(9, 9, 9, 0.92), rgba(5, 5, 5, 0.96));
+  box-shadow: var(--shadow-md);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 245, 196, 0.28);
+  background: rgba(0, 245, 196, 0.08);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.projectMeta {
+  min-width: 0;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.projectName {
+  width: min(420px, 46vw);
+  max-width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem;
+  font-size: 0.95rem;
+}
+
+.subline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.toolGroup,
+.actionGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem;
+  border-radius: 14px;
+  border: 1px solid rgba(39, 39, 39, 0.85);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.3rem;
+  padding: 0 0.9rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    color 120ms ease,
+    border-color 120ms ease,
+    background 120ms ease,
+    transform 120ms ease;
+}
+
+.button:hover {
+  color: var(--text);
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.buttonActive {
+  color: var(--accent);
+  border-color: rgba(0, 245, 196, 0.35);
+  background: rgba(0, 245, 196, 0.08);
+}
+
+.warningButton:hover {
+  color: var(--accent-2);
+  border-color: rgba(255, 207, 90, 0.34);
+  background: rgba(255, 207, 90, 0.08);
+}
+
+.dangerButton:hover {
+  color: var(--danger);
+  border-color: rgba(255, 92, 133, 0.34);
+  background: rgba(255, 92, 133, 0.08);
+}
+
+.ghostText {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 1200px) {
+  .bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .controls {
+    justify-content: flex-start;
+  }
+
+  .projectName {
+    width: 100%;
+  }
+}

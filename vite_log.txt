@@ -1,0 +1,27 @@
+
+> dev
+> vite --port 5188 --strictPort
+
+[plugin:vite-plugin-qwik] context method emitFile() is not supported in serve mode. This plugin is likely not vite-compatible.
+
+  VITE v7.3.1  ready in 84 ms
+
+  ➜  Local:   http://localhost:5188/
+  ➜  Network: http://192.168.1.102:5188/
+  ➜  Network: http://10.117.43.111:5188/
+  ➜  Network: http://172.25.0.1:5188/
+  ➜  Network: http://192.168.16.1:5188/
+  ➜  Network: http://192.168.32.1:5188/
+  ➜  Network: http://172.19.0.1:5188/
+  ➜  Network: http://172.28.0.1:5188/
+  ➜  Network: http://172.20.0.1:5188/
+  ➜  Network: http://172.29.0.1:5188/
+  ➜  press h + enter to show help
+
+  🚧 Please note that development mode is slower than production.
+05:01:11 [vite] (client) page reload src/components/header.tsx
+05:01:22 [vite] (client) page reload src/components/header.tsx
+05:05:56 [vite] (client) page reload src/components/header.tsx
+06:36:05 [vite] (client) page reload src/components/header.tsx
+06:38:30 [vite] (client) page reload src/components/header.tsx
+06:42:28 [vite] (client) page reload src/components/header.tsx

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "SHADOW Qwik EDA",
+  "short_name": "SHADOW EDA",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#050505",
+  "description": "Modular Qwik rebuild of the SHADOW EDA workspace."
+}

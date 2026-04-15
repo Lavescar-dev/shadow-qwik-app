@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --term_bg: #0a0a0a;
+  --term_fg: #e5e5e5;
+  --term_accent: #00ffcc;
+  --term_dim: #262626;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(0, 255, 204, 0.08), transparent 30%),
+    linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+  color: var(--term_fg);
+  font-family: "Fira Code", Consolas, Monaco, monospace;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
