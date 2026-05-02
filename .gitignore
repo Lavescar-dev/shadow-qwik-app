@@ -2,6 +2,9 @@ node_modules/
 dist/
 dist-dev/
 .tmp/
+tmp/
 .vite/
 .cache/
 package-lock.json
+vite_log.txt
+*.zip
