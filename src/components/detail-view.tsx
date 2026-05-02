@@ -21,9 +21,21 @@ export const DetailView = component$(() => {
       <button type="button" onClick$={() => openCatalog(app, app.ui.detailOriginSection ?? app.ui.activeSection)} class="mb-6 flex items-center gap-2 text-gray-400 hover:text-term_accent transition-colors group"><span class="font-bold text-xl group-hover:-translate-x-1 transition-transform">&lt;</span><span class="font-mono">$ cd ..</span></button>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
         <div class="aspect-square border border-term_dim bg-[#050505] flex flex-col items-center justify-center text-term_dim relative overflow-hidden group">
-          <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: repeating-linear-gradient(45deg, #00ffcc 25%, transparent 25%, transparent 75%, #00ffcc 75%, #00ffcc), repeating-linear-gradient(45deg, #00ffcc 25%, #050505 25%, #050505 75%, #00ffcc 75%, #00ffcc); background-position: 0 0, 10px 10px; background-size: 20px 20px;"></div>
-          <ImagePlaceholderIcon class="w-24 h-24 mb-4 relative z-10 group-hover:text-term_accent transition-colors duration-500" />
-          <span class="text-xl tracking-widest uppercase relative z-10 font-bold group-hover:text-term_accent transition-colors duration-500">[ HI-RES_RENDER ]</span>
+          {selected.image ? (
+            <img
+              src={selected.image}
+              alt={selected.name}
+              loading="lazy"
+              referrerPolicy="no-referrer"
+              class="w-full h-full object-contain p-4 relative z-10"
+            />
+          ) : (
+            <>
+              <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: repeating-linear-gradient(45deg, #00ffcc 25%, transparent 25%, transparent 75%, #00ffcc 75%, #00ffcc), repeating-linear-gradient(45deg, #00ffcc 25%, #050505 25%, #050505 75%, #00ffcc 75%, #00ffcc); background-position: 0 0, 10px 10px; background-size: 20px 20px;"></div>
+              <ImagePlaceholderIcon class="w-24 h-24 mb-4 relative z-10 group-hover:text-term_accent transition-colors duration-500" />
+              <span class="text-xl tracking-widest uppercase relative z-10 font-bold group-hover:text-term_accent transition-colors duration-500">[ HI-RES_RENDER ]</span>
+            </>
+          )}
           <div class="absolute bottom-3 right-3 text-xs opacity-40 z-10 font-mono">CHECKSUM: {createChecksum(selected.name)}</div>
         </div>
         <div class="flex flex-col">
