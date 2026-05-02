@@ -1,6 +1,8 @@
 import { $, component$, useComputed$, useContext, useSignal, useVisibleTask$ } from '@builder.io/qwik';
-import * as THREE from 'three';
+import type * as ThreeNS from 'three';
 import { AppContext } from '../../context/app-context';
+
+type ThreeLib = typeof ThreeNS;
 import { assemblyRepo } from '../../data/assembly-repo';
 import {
   closeAssemblyCategory,
@@ -141,10 +143,6 @@ const physicalAddressing: Array<{ key: AssemblyCategoryId; x: number; y: number;
   { key: 'storage', x: -6, y: -6.45, z: 0 },
 ];
 
-const colorUnmounted = new THREE.Color(0x333333);
-const colorMounted = new THREE.Color(0x00ffcc);
-const colorHover = new THREE.Color(0xffffff);
-
 const formatUptime = (uptimeSeconds: number) => {
   const hours = String(Math.floor(uptimeSeconds / 3600)).padStart(2, '0');
   const minutes = String(Math.floor((uptimeSeconds % 3600) / 60)).padStart(2, '0');
@@ -202,8 +200,13 @@ export const AssemblyView = component$(() => {
     });
   });
 
-  useVisibleTask$(({ cleanup }) => {
+  useVisibleTask$(async ({ cleanup }) => {
     if (!containerRef.value) return;
+
+    const THREE: ThreeLib = await import('three');
+    const colorUnmounted = new THREE.Color(0x333333);
+    const colorMounted = new THREE.Color(0x00ffcc);
+    const colorHover = new THREE.Color(0xffffff);
 
     const container = containerRef.value;
     const scene = new THREE.Scene();
