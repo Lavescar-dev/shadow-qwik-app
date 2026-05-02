@@ -1,13 +1,21 @@
-import { component$, useComputed$, useContext } from '@builder.io/qwik';
+import { $, component$, useComputed$, useContext } from '@builder.io/qwik';
+import { useNavigate } from '@builder.io/qwik-city';
 import { AppContext } from '../context/app-context';
-import { openCheckout, removeFromCart, toggleCart, updateCartQty } from '../lib/actions';
+import { guardCheckout, removeFromCart, toggleCart, updateCartQty } from '../lib/actions';
 import { getCartTotals } from '../lib/cart';
 import { formatCurrency } from '../lib/format';
 
 export const CartOverlay = component$(() => {
   const { app } = useContext(AppContext);
+  const nav = useNavigate();
   const totals = useComputed$(() => getCartTotals(app.cart));
   const hasItems = useComputed$(() => app.cart.length > 0);
+
+  const onCheckout$ = $(async () => {
+    if (guardCheckout(app)) {
+      await nav('/checkout');
+    }
+  });
 
   return (
     <div
@@ -101,12 +109,12 @@ export const CartOverlay = component$(() => {
           </div>
           <button
             type="button"
-            onClick$={() => openCheckout(app)}
+            onClick$={onCheckout$}
             class={[
               'w-full font-bold py-3 uppercase tracking-wider transition-colors',
               hasItems.value
                 ? 'bg-term_accent text-term_bg hover:bg-white'
-                : 'border border-dashed border-term_dim text-gray-700 cursor-not-allowed bg-transparent'
+                : 'border border-dashed border-term_dim text-gray-700 cursor-not-allowed bg-transparent',
             ]}
             disabled={!hasItems.value}
           >

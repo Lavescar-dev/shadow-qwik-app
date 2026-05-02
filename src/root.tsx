@@ -1,13 +1,6 @@
-import { component$, useContextProvider, useStore, useTask$ } from '@builder.io/qwik';
-import { Header } from './components/header';
-import { Footer } from './components/footer';
-import { AssemblyView } from './components/assembly/assembly-view';
-import { CatalogView } from './components/catalog-view';
-import { DetailView } from './components/detail-view';
-import { CheckoutView } from './components/checkout-view';
-import { CartOverlay } from './components/cart-overlay';
-import { ElectronicsView } from './components/electronics/electronics-view';
-import { ToastContainer } from './components/toasts';
+import { component$, useContextProvider, useStore, useTask$, useVisibleTask$ } from '@builder.io/qwik';
+import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from '@builder.io/qwik-city';
+import { RouterHead } from './router-head';
 import { AppContext } from './context/app-context';
 import { inventory, products } from './data/shared-inventory';
 import { createInitialAssemblyState } from './lib/assembly-config';
@@ -19,7 +12,6 @@ import './global.css';
 const categories = getCategories(products);
 
 const CART_STORAGE_KEY = 'shadow-cart-v1';
-
 type StoredCartEntry = { id: number; qty: number };
 
 const readStoredCart = (): StoredCartEntry[] => {
@@ -47,7 +39,7 @@ const hydrateCart = (entries: StoredCartEntry[], productsById: Record<number, Pr
 export default component$(() => {
   const app = useStore<AppStore>({
     controls: { searchQuery: '', category: 'ALL', sort: 'DEFAULT', currentPage: 1, itemsPerPage: 6 },
-    cart: hydrateCart(readStoredCart(), inventory.productsById),
+    cart: [],
     ui: {
       currentView: 'catalog',
       activeSection: 'shop',
@@ -62,6 +54,16 @@ export default component$(() => {
     nextToastId: 1,
   });
 
+  useContextProvider(AppContext, { app, products, categories, inventory });
+
+  // Restore cart from localStorage on first client mount (SSR can't see window)
+  useVisibleTask$(() => {
+    if (app.cart.length > 0) return;
+    const restored = hydrateCart(readStoredCart(), inventory.productsById);
+    if (restored.length) app.cart.push(...restored);
+  });
+
+  // Persist cart on every mutation
   useTask$(({ track }) => {
     track(() => app.cart.map((item) => `${item.id}:${item.qty}`).join('|'));
     if (typeof window === 'undefined') return;
@@ -73,24 +75,15 @@ export default component$(() => {
     }
   });
 
-  useContextProvider(AppContext, { app, products, categories, inventory });
-  const isAssemblySection = app.ui.currentView === 'catalog' && app.ui.activeSection === 'assembly';
-  const isElectronicsSection = app.ui.currentView === 'catalog' && app.ui.activeSection === 'electronic';
-  const isWorkspaceSection = isAssemblySection || isElectronicsSection;
-
   return (
-    <div class={['font-mono antialiased flex flex-col bg-term_bg text-term_fg selection:bg-term_accent selection:text-term_bg', isWorkspaceSection ? 'h-screen overflow-hidden' : 'min-h-screen']}>
-      <Header />
-      <main class={isElectronicsSection ? 'flex-grow min-h-0 w-full overflow-hidden' : isAssemblySection ? 'flex-grow min-h-0 w-full overflow-hidden' : 'flex-grow max-w-6xl mx-auto w-full p-4 mt-8'}>
-        {app.ui.currentView === 'catalog' && !isElectronicsSection && !isAssemblySection && <CatalogView />}
-        {isAssemblySection && <AssemblyView />}
-        {isElectronicsSection && <ElectronicsView />}
-        {app.ui.currentView === 'detail' && <DetailView />}
-        {app.ui.currentView === 'checkout' && <CheckoutView />}
-      </main>
-      {!isWorkspaceSection && <Footer />}
-      <CartOverlay />
-      <ToastContainer />
-    </div>
+    <QwikCityProvider>
+      <head>
+        <RouterHead />
+      </head>
+      <body lang="tr">
+        <RouterOutlet />
+        <ServiceWorkerRegister />
+      </body>
+    </QwikCityProvider>
   );
 });

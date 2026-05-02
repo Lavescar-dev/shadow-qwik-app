@@ -1,4 +1,5 @@
 import { $, component$, useComputed$, useContext, useSignal, useVisibleTask$ } from '@builder.io/qwik';
+import { useNavigate } from '@builder.io/qwik-city';
 import { AppContext } from '../../context/app-context';
 import { electronicsComponents } from '../../data/electronics-components';
 import {
@@ -16,7 +17,6 @@ import {
   instantiateElectronicsNode,
 } from '../../lib/electronics-actions';
 import { buildTracePath, clamp, getNodeId, getPinId, rectsOverlap, snapToGrid } from '../../lib/electronics-geometry';
-import { openDetail } from '../../lib/actions';
 import './electronics.css';
 import { ElectronicsBoard } from './electronics-board';
 import { ElectronicsSidebar } from './electronics-sidebar';
@@ -25,6 +25,7 @@ import { ElectronicsToolbar } from './electronics-toolbar';
 
 export const ElectronicsView = component$(() => {
   const { app, inventory } = useContext(AppContext);
+  const nav = useNavigate();
   const state = app.electronics;
   const boardRef = useSignal<HTMLElement>();
   const traceFrame = useSignal<number>();
@@ -168,10 +169,10 @@ export const ElectronicsView = component$(() => {
     scheduleTraceRender();
   });
 
-  const onOpenLinkedProduct$ = $((componentId: string) => {
+  const onOpenLinkedProduct$ = $(async (componentId: string) => {
     const product = inventory.productByElectronicsComponentId[componentId];
     if (!product) return;
-    openDetail(app, product.id, 'electronic');
+    await nav(`/product/${product.id}?from=electronic`);
   });
 
   const onClearTraces$ = $(() => {

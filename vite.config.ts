@@ -1,20 +1,12 @@
 import { defineConfig } from 'vite';
 import { qwikVite } from '@builder.io/qwik/optimizer';
-import { resolve, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { qwikCity } from '@builder.io/qwik-city/vite';
+import { cloudflarePagesAdapter } from '@builder.io/qwik-city/adapters/cloudflare-pages/vite';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-export default defineConfig({
-  plugins: [qwikVite()],
-  build: {
-    rollupOptions: {
-      input: resolve(__dirname, 'index.html'),
-      output: {
-        manualChunks: (id) => {
-          if (id.includes('/node_modules/three/')) return 'three';
-        },
-      },
-    },
-  },
-});
+export default defineConfig(({ mode }) => ({
+  plugins: [
+    qwikCity(),
+    qwikVite(),
+    ...(mode === 'cloudflare-pages' ? [cloudflarePagesAdapter()] : []),
+  ],
+}));
