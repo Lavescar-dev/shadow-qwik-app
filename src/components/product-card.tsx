@@ -11,9 +11,21 @@ export const ProductCard = component$<Props>(({ product }) => {
   const { app } = useContext(AppContext);
   return (
     <div class="border border-term_dim p-5 hover:border-term_accent transition-all flex flex-col group bg-black">
-      <button type="button" onClick$={() => openDetail(app, product.id)} class="h-40 mb-4 border border-term_dim bg-term_dim/20 flex flex-col items-center justify-center text-term_dim group-hover:text-term_accent group-hover:border-term_accent transition-colors cursor-pointer">
-        <ImagePlaceholderIcon class="w-10 h-10 mb-2 pointer-events-none" />
-        <span class="text-[10px] tracking-widest uppercase opacity-70 pointer-events-none">[ IMG_DATA_STREAM ]</span>
+      <button type="button" onClick$={() => openDetail(app, product.id)} class="h-40 mb-4 border border-term_dim bg-term_dim/20 flex flex-col items-center justify-center text-term_dim group-hover:text-term_accent group-hover:border-term_accent transition-colors cursor-pointer overflow-hidden relative">
+        {product.image ? (
+          <img
+            src={product.image}
+            alt={product.name}
+            loading="lazy"
+            referrerPolicy="no-referrer"
+            class="w-full h-full object-contain bg-black p-2 pointer-events-none"
+          />
+        ) : (
+          <>
+            <ImagePlaceholderIcon class="w-10 h-10 mb-2 pointer-events-none" />
+            <span class="text-[10px] tracking-widest uppercase opacity-70 pointer-events-none">[ IMG_DATA_STREAM ]</span>
+          </>
+        )}
       </button>
       <div class="flex justify-between items-start mb-4"><span class="text-xs bg-term_dim text-gray-300 px-2 py-1 rounded-sm">{product.tag}</span><span class="text-term_accent font-bold">{formatCurrency(product.price)}</span></div>
       <button type="button" onClick$={() => openDetail(app, product.id)} class="text-left text-lg font-bold mb-2 group-hover:text-term_accent transition-colors cursor-pointer">{product.name}</button>

@@ -21,6 +21,7 @@ export interface Product {
   specs: Record<string, string>;
   longDesc: string;
   comments: ProductComment[];
+  image?: string;
 }
 
 export interface SharedInventoryItem extends Product {
