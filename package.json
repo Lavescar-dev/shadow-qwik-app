@@ -7,7 +7,7 @@
     "build": "qwik build",
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
-    "build.server": "vite build -c adapters/cloudflare-pages/vite.config.ts",
+    "build.server": "vite build -c adapters/cloudflare-pages/vite.config.ts && sed -i 's|\"server/entry|\"./server/entry|' dist/_worker.js",
     "build.types": "tsc --incremental --noEmit",
     "preview": "qwik build preview && vite preview",
     "check": "tsc --noEmit",
