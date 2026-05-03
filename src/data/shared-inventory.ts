@@ -52,8 +52,8 @@ const defaultSpecs = {
   Garanti: 'Sadece donanim hatalarina karsi (Kullanici hatasi = Skill issue)',
 } as const;
 
-// Wikimedia Commons hotlinks. Verified product-accurate after second-pass audit.
-// IDs absent (no acceptable Commons photo): 5, 13, 17, 20, 21, 25, 26, 27, 34, 35 — placeholder renders instead.
+// Wikimedia Commons hotlinks. Where exact-model photos do not exist on Commons,
+// a same-brand or same-category representative is used (acceptable for demo display).
 const productImages: Record<number, string> = {
   1: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/ThinkPad_X1_Carbon_gen7_%280%29.jpg/960px-ThinkPad_X1_Carbon_gen7_%280%29.jpg',
   2: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Raspberry_Pi_5.jpg/960px-Raspberry_Pi_5.jpg',
@@ -83,6 +83,17 @@ const productImages: Record<number, string> = {
   36: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/ESP32-S3_on_paper.jpg/960px-ESP32-S3_on_paper.jpg',
   37: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/DC_to_DC_Power_Module_%2850837516042%29.jpg/960px-DC_to_DC_Power_Module_%2850837516042%29.jpg',
   38: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tower_Pro_SG90_micro_servo_motor.jpg/960px-Tower_Pro_SG90_micro_servo_motor.jpg',
+  // Same-brand or same-category fallbacks (Commons has no exact-model photo for these):
+  5: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/GL-iNet_Travel_Router_and_Wyze_Camera_-_Hotel_Room_Security.jpg/960px-GL-iNet_Travel_Router_and_Wyze_Camera_-_Hotel_Room_Security.jpg',
+  13: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/YubiKey_5C_NFC.jpg/960px-YubiKey_5C_NFC.jpg',
+  17: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/LG_UltraWide_monitors.jpg/960px-LG_UltraWide_monitors.jpg',
+  20: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Corsair_CX430.JPG/960px-Corsair_CX430.JPG',
+  21: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Fractal_Design_Focus_G.jpg/960px-Fractal_Design_Focus_G.jpg',
+  25: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Supermicro_SBI-7228R-T2X_blade_server.jpg/960px-Supermicro_SBI-7228R-T2X_blade_server.jpg',
+  26: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_P%C5%82yta_g%C5%82%C3%B3wna_Asus_ROG_STRIX_Z690-A_GAMING_WIFI.jpg/960px-2023_P%C5%82yta_g%C5%82%C3%B3wna_Asus_ROG_STRIX_Z690-A_GAMING_WIFI.jpg',
+  27: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/ASRock_TRX50_WS_20240406_HOF1812-HDR_RAW-Export_000182.png/960px-ASRock_TRX50_WS_20240406_HOF1812-HDR_RAW-Export_000182.png',
+  34: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/PNY_Nvidia_Quadro_P1000.jpg/960px-PNY_Nvidia_Quadro_P1000.jpg',
+  35: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Corsair_H100i_240mm_CPU_cooler._On_MSI_Z590_Torpedo_motherboard._%2851987363353%29.jpg/960px-Corsair_H100i_240mm_CPU_cooler._On_MSI_Z590_Torpedo_motherboard._%2851987363353%29.jpg',
 };
 
 const pickComments = (productId: number) => {
