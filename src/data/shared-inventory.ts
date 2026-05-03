@@ -85,11 +85,11 @@ const productImages: Record<number, string> = {
   38: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tower_Pro_SG90_micro_servo_motor.jpg/960px-Tower_Pro_SG90_micro_servo_motor.jpg',
   // Same-brand or same-category fallbacks (Commons has no exact-model photo for these):
   5: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/GL-iNet_Travel_Router_and_Wyze_Camera_-_Hotel_Room_Security.jpg/960px-GL-iNet_Travel_Router_and_Wyze_Camera_-_Hotel_Room_Security.jpg',
-  13: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/YubiKey_5C_NFC.jpg/960px-YubiKey_5C_NFC.jpg',
+  13: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Google_Titan_Security_Key_-_Two_Factor_Authentication_%2847400104011%29.jpg/960px-Google_Titan_Security_Key_-_Two_Factor_Authentication_%2847400104011%29.jpg',
   17: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/LG_UltraWide_monitors.jpg/960px-LG_UltraWide_monitors.jpg',
   20: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Corsair_CX430.JPG/960px-Corsair_CX430.JPG',
   21: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Fractal_Design_Focus_G.jpg/960px-Fractal_Design_Focus_G.jpg',
-  25: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Supermicro_SBI-7228R-T2X_blade_server.jpg/960px-Supermicro_SBI-7228R-T2X_blade_server.jpg',
+  25: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Be_quiet%21_Straight_Power_12_1200W_20240405_HOF1650-HDR_RAW-Export_000105.png/960px-Be_quiet%21_Straight_Power_12_1200W_20240405_HOF1650-HDR_RAW-Export_000105.png',
   26: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_P%C5%82yta_g%C5%82%C3%B3wna_Asus_ROG_STRIX_Z690-A_GAMING_WIFI.jpg/960px-2023_P%C5%82yta_g%C5%82%C3%B3wna_Asus_ROG_STRIX_Z690-A_GAMING_WIFI.jpg',
   27: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/ASRock_TRX50_WS_20240406_HOF1812-HDR_RAW-Export_000182.png/960px-ASRock_TRX50_WS_20240406_HOF1812-HDR_RAW-Export_000182.png',
   34: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/PNY_Nvidia_Quadro_P1000.jpg/960px-PNY_Nvidia_Quadro_P1000.jpg',

@@ -53,9 +53,9 @@ export const DetailView = component$(() => {
               ></div>
               <ImagePlaceholderIcon class="w-24 h-24 mb-4 relative z-10 group-hover:text-term_accent transition-colors duration-500" />
               <span class="text-xl tracking-widest uppercase relative z-10 font-bold group-hover:text-term_accent transition-colors duration-500">[ HI-RES_RENDER ]</span>
+              <div class="absolute bottom-3 right-3 text-xs opacity-40 z-10 font-mono">CHECKSUM: {createChecksum(selected.name)}</div>
             </>
           )}
-          <div class="absolute bottom-3 right-3 text-xs opacity-40 z-10 font-mono">CHECKSUM: {createChecksum(selected.name)}</div>
         </div>
         <div class="flex flex-col">
           <div class="flex justify-between items-start mb-2">
